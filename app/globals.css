@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 300 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 300 100% 50%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 300 100% 50%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 300 100% 50%;
+  }
+
+  /* Improve touch targets on mobile */
+  @media (max-width: 768px) {
+    button,
+    a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Use a more modern viewport height unit for mobile browsers */
+  .min-h-screen {
+    min-height: 100vh; /* fallback */
+    min-height: 100svh;
+  }
+
+  /* Improve text readability on mobile */
+  @media (max-width: 640px) {
+    body {
+      font-size: 16px;
+      line-height: 1.5;
+    }
+  }
+
+  /* Add hover simulation for touch devices */
+  @media (hover: none) {
+    .hover-touch {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .hover-touch:active {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+@layer utilities {
+  .animate-scan {
+    animation: scan 3s ease-in-out infinite;
+  }
+
+  .animate-scan-vertical {
+    animation: scan-vertical 4s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite;
+  }
+
+  .animate-fade-in {
+    animation: fade-in 1s ease-out forwards;
+  }
+
+  .animate-fade-in-delay {
+    animation: fade-in 1s ease-out 0.3s forwards;
+    opacity: 0;
+  }
+
+  .animate-fade-in-delay-2 {
+    animation: fade-in 1s ease-out 0.6s forwards;
+    opacity: 0;
+  }
+
+  .video-preload {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .video-loaded {
+    opacity: 1;
+  }
+
+  /* Touch-friendly utility */
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
+
+  /* Responsive padding utility */
+  .responsive-padding {
+    padding: clamp(1rem, 5vw, 2rem);
+  }
+
+  /* Responsive text size utility */
+  .responsive-text {
+    font-size: clamp(1rem, 4vw, 1.25rem);
+  }
+
+  /* Responsive heading utility */
+  .responsive-heading {
+    font-size: clamp(1.5rem, 8vw, 3rem);
+  }
+
+  /* Service card animation utilities */
+  .service-card-expand {
+    transition: height 0.5s ease-in-out;
+  }
+
+  .service-card-content {
+    transition: opacity 0.3s ease-in-out;
+  }
+}
+
+@keyframes scan {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes scan-vertical {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom font styles */
+.font-heading {
+  font-family: "Playfair Display", serif;
+  font-weight: 700;
+}
+
+/* Alternative implementation using CSS variables */
+.font-heading-alt {
+  font-family: var(--font-playfair), serif;
+  font-weight: 700;
+}
